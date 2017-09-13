@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'assets/rockworthy_logo.png' %}">
+
+        <title>Rock Worthy</title>
+        <!-- Google Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'vendor/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" crossorigin="anonymous">
+        <!-- custom CSS -->
+        <link rel="stylesheet" href="{% static 'vendor/custom.css' %}">
+    </head>
+    <body>
+        <nav id="navigation-side-bar" class="nav-closed">
+            <div class="nav-button"><img src="{% static 'assets/rockworthy_pick.png' %}"><a href="#" class="menu-pick" href=""><span class="material-icons">menu</span></a></div>
+            <ul class="list-unstyled menu-items">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Contact/">Contact</a></li>
+            </ul>
+        </nav>
+        {% block content %}{% endblock %}
+
+    <!-- jQuery first, then tether.js, then Bootstrap JS -->
+        <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>        
+        <script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'vendor/custom.js' %}"></script>
+    </body>
+
+</html>

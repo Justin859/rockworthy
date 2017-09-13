@@ -1,0 +1,68 @@
+body {
+    background-color: #e0e0e0;
+}
+
+nav {
+    z-index: 9;
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background-color: #aeaeae;
+    box-shadow: 2px 0px 2px #888888;
+}
+
+.menu-items li {
+    padding: 15px;
+    color: #ffffff;
+    font-size: 25px;
+    
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: #ffffff;
+    text-justify: top;
+    text-align: justify;
+}
+
+.nav-closed {
+    left: -225px;
+    transition: .5s;
+}
+
+.nav-open {
+    left: 0px;
+    transition: .5s; 
+}
+
+ .nav-button span {
+    z-index: 9;
+    position: absolute;
+    margin-left: -36px; 
+    margin-top: 20px;
+}
+
+.nav-button a {
+    text-decoration: none;
+    color: #ffffffff;
+}
+
+.nav-button {
+    margin-top: 15px;
+    margin-left: 200px; 
+}
+
+.nav-button img {
+    height: 66px;
+    width: 78px;
+}
+
+.front-page {
+    padding: 15px;
+}
+
+.card {
+    box-shadow: 2px 0px 2px #888888;
+    border-radius: 2px;
+    border: none;
+}

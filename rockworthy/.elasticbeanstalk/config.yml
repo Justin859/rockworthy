@@ -1,6 +1,6 @@
 branch-defaults:
   default:
-    environment: null
+    environment: rockworthy-env
     group_suffix: null
 global:
   application_name: rock-worthy

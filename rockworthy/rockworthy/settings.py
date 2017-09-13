@@ -25,7 +25,7 @@ SECRET_KEY = 'iqmz6pl+%eb*)y1&54b7f5l-g1u28$lmpkg&@dnw6o7mejo0v+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rockworthy-env.zdm3bhufhs.us-east-1.elasticbeanstalk.com', '127.0.0.1']
 
 
 # Application definition

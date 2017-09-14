@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<div class="container front-page">
+<div class="container-fluid">
     <div class="row">
       <div class="col-2 hidden-lg-up"></div>
   
-      <div class="col-8 main-logo" align="right">
+      <div class="col-8 main-logo" align="right" style="margin-top: 30px;">
         <img class="img-fluid" src="{% static 'assets/rockworthy_main.png' %}">
       </div>
       
@@ -16,25 +16,32 @@
     <br /><hr />
     <div class="row">
         <div class="col-12">
-          <h3 class="display-4 hidden-sm-down">Up Comming Events</h3>
+          <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Up Comming Events</h3>
           <h1 class="hidden-md-up text-center">Up Comming Events</h1>
         </div>
     </div>
-
+</div>
+<div class="container">
     <br />
     <div class="row">
       {% for event in events %}
         {% if event.start_time >= date %}
-        <div class="col-12 col-md-4" >
-          <div class="card" style="margin: 15px;">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card">
               <img class="card-img-top img-fluid" src="{{event.cover.source}}" alt="">
               <div class="card-block">
                 <h4 class="card-title">{{event.name}}</h4>
                 <p class="card-text">Attending : {{event.attending_count}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Place : {{event.place.name}}</li>                  
-                  <li class="list-group-item">Date : {{event.start_time}}</li>
+                  <li class="list-group-item"><b>Place</b>&nbsp;{{event.place.name}}</li>                  
+                  <li class="list-group-item"><b>Date</b>&nbsp;{{event.start_time}}</li>
+                  <li class="list-group-item d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a type="button" href="#" class="btn btn-secondary">view event</a>
+                        <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary">View on facebook</a>
+                      </div>
+                  </li>
               </ul>
             </div>
         </div>

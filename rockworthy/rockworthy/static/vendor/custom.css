@@ -3,19 +3,23 @@ body {
 }
 
 nav {
-    z-index: 9;
+    z-index: 2;
     position: fixed;
     height: 100%;
-    width: 250px;
+    width: 200px;
+    overflow-x: hidden;
     background-color: #5d4037;
     box-shadow: 2px 0px 2px #888888;
 }
 
+.nav-open {
+    left: 0px;
+    transition: .3s; 
+}
+
 .menu-items li {
-    padding: 15px;
     color: #ffffff;
-    font-size: 25px;
-    
+    text-align: center;    
 }
 
 .menu-items a {
@@ -25,22 +29,16 @@ nav {
     text-align: justify;
 }
 
-.nav-closed {
-    left: -225px;
-    transition: .5s;
-}
-
-.nav-open {
-    left: 0px;
-    transition: .5s; 
+.nav-button {
+    position: fixed; /* Fixed/sticky position */
+    margin: 0;
+    z-index: 99; /* Make sure it does not overlap */    
 }
 
 .nav-button span {
     position: absolute;
-    z-index: 9;
+    z-index: 90;
     margin: 0;
-    left: 240px !important; 
-    top: 35px !important;
 }
 
 .nav-button a {
@@ -50,7 +48,28 @@ nav {
 
 .nav-button {
     margin-top: 15px;
-    margin-left: 200px; 
+    margin-left: 160px; 
+}
+
+.nav-button span {
+    left: 40px !important; 
+    top: 22px !important;
+}
+
+.nav-button-open {
+    position: fixed; /* Fixed/sticky position */
+    margin: 0;
+    top: 5px; /* Place the button at the bottom of the page */
+    left: 160px; /* Place the button 30px from the right */
+    transition: .3s;         
+}
+
+.nav-button-closed {
+    position: fixed; /* Fixed/sticky position */
+    margin: 0;
+    top: 5px; /* Place the button at the bottom of the page */
+    left: -25px; /* Place the button 30px from the right */
+    transition: .3s;         
 }
 
 .nav-button img {
@@ -58,12 +77,50 @@ nav {
     width: 78px;
 }
 
-.front-page {
-    padding: 15px;
-}
-
 .card {
     box-shadow: 2px 0px 2px #888888;
     border-radius: 2px;
     border: none;
+    margin-bottom: 15px !important; 
+}
+
+@media only screen and (min-width: 1024px){
+    .nav-closed {
+        left: -180px;
+        transition: .3s;
+    }
+    
+}
+
+@media only screen and (max-width: 1024px){
+    .nav-closed {
+        left: -200px;
+        transition: .3s;
+    }
+    
+}
+
+.main-menu-item {
+    font-size: 25px !important;
+}
+
+.secondary-menu-item {
+    font-size: 20px !important;
+}
+
+.last-menu-item {
+    font-size: 15px;
+}
+
+.fret {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);}
+
+sub {
+    font-size: 10px !important;
+    margin: 0px;
+    top: 25px;
+    left: 8px;
 }

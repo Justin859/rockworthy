@@ -23,7 +23,7 @@
         <nav id="navigation-side-bar" class="nav-closed">
             <ul class="list-unstyled menu-items" style="padding-top: 80px;">
                 <hr class="fret" />
-                <li><a class="main-menu-item" href="/">Home</a></li>
+                <li><a class="main-menu-item menu-item-active" href="/">Home</a></li>
                 <hr class="fret" />
                 <div style="padding: 18px !important;"></div>
                 <hr class="fret" />
@@ -42,7 +42,21 @@
                 <sub>site credit: <a target="_blank" href="http://www.yourdev.co.za/">&copy; Yourdev Web Development</a></sub>
             </ul>
         </nav>
-        {% block content %}{% endblock %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 hidden-lg-up"></div>
+            
+                <div class="col-8 main-logo" align="right" style="margin-top: 30px;">
+                <img class="img-fluid" src="{% static 'assets/rockworthy_main.png' %}">
+                </div>
+                
+            </div>
+
+        </div>
+            <hr />
+                {% block content %}{% endblock %}
+
+        
 
     <!-- jQuery first, then tether.js, then Bootstrap JS -->
         <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>

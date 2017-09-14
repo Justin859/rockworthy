@@ -24,7 +24,7 @@ nav {
 
 .menu-items a {
     text-decoration: none;
-    color: #ffffff;
+    color: #cccccc;
     text-justify: top;
     text-align: justify;
 }
@@ -97,6 +97,15 @@ nav {
         left: -200px;
         transition: .3s;
     }
+
+    .hide-button {
+        margin-left: -50px;
+        transition: 0.3s;
+    }
+    
+    .stop-mobile-scroll {
+        overflow: hidden;
+    }
     
 }
 
@@ -120,7 +129,16 @@ nav {
 
 sub {
     font-size: 10px !important;
+    color: #ffc107;
     margin: 0px;
     top: 25px;
     left: 8px;
+}
+
+.menu-items a:hover {
+    color: #ffffff;
+}
+
+.menu-item-active {
+    color: #ffffff !important;
 }

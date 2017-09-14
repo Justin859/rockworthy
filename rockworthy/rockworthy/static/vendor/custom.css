@@ -88,8 +88,7 @@ nav {
     .nav-closed {
         left: -180px;
         transition: .3s;
-    }
-    
+    }    
 }
 
 @media only screen and (max-width: 1024px){

@@ -19,7 +19,7 @@
     <div class="col-3 hidden-sm-down"></div>
         <div class="col-12 col-md-6">
             <div class="card">
-            <img class="card-img-top img-fluid" style="height: 100% !important; width: auto !important;" src="{{event.cover.source}}" alt="">
+            <img class="card-img-top img-fluid" src="{{event.cover.source}}" alt="">
             <div class="card-block" style="overflow: hidden;">
                 <h4 class="card-title">{{event.name}}</h4>
                 <p class="card-text">{{event.description | markdown_to_html}}</p>
@@ -40,13 +40,13 @@
     <div class="row">
         <div class="col-1 hidden-sm-down"></div>
         <div class="col-12">
-                <iframe
-                width="100%"
-                height="auto"
-                frameborder="0" style="border:0"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCUGbVg0er5HiP_5ARNdlabdkoJIs2ERjI
-                    &q={{event.place.location.latitude}},{{event.place.location.longitude}}" allowfullscreen>
-                </iframe>
+            <iframe
+            width="100%"
+            height="auto"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCUGbVg0er5HiP_5ARNdlabdkoJIs2ERjI
+                &q={{event.place.location.latitude}},{{event.place.location.longitude}}" allowfullscreen>
+            </iframe>
         </div>
     </div> 
 </div>

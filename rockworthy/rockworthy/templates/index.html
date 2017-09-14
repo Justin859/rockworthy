@@ -18,7 +18,7 @@
         {% if event.start_time >= date %}
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card">
-              <img class="card-img-top img-fluid" style="height: 100% !important; width: auto !important;" src="{{event.cover.source}}" alt="">
+              <img class="card-img-top img-fluid" src="{{event.cover.source}}" alt="">
               <div class="card-block">
                 <h4 class="card-title">{{event.name}}</h4>
                 <p class="card-text"><b>Attending</b>&nbsp;<span class="badge badge-info">{{event.attending_count}}</span>

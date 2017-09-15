@@ -18,6 +18,16 @@ $(document).ready(function(){
         e.preventDefault()
     });
 
+    $(".container, .container-fluid").click(function() {
+        if($('#navigation-side-bar').hasClass('nav-open')) {
+            $('nav').removeClass("nav-open");
+            $('nav').addClass("nav-closed");
+            $('.nav-button').removeClass('nav-button-open')
+            $('.nav-button').addClass('nav-button-closed');
+            $('body').removeClass('stop-mobile-scroll')
+        }
+    })
+
     var lastScrollTop = 0;
 
     $(window).scroll(function(event){

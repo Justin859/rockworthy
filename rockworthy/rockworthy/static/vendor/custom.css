@@ -141,3 +141,11 @@ sub {
 .menu-item-active {
     color: #ffffff !important;
 }
+
+.cover-photo {
+    background-size: cover;
+    height: 312px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-color: #000000;
+}

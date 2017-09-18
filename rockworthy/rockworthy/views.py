@@ -50,7 +50,7 @@ def venues(request):
     hosts = []
     access_token = get_access_token()
 
-    event_hosts = EventHost.objects.all()
+    event_hosts = EventHost.objects.filter(host_type='Venue')
 
     for event in event_hosts:
         result = json.loads(requests.get(
@@ -75,3 +75,51 @@ def venue_detail(request, venue_id):
         raise Http404("Venue does not exists on Rock Worthy")
 
     return render(request, 'venue_detail.html', {"venue": venue, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+
+def live_music(request):
+    events = []
+
+    event_hosts = EventHost.objects.filter(event_type='Live Shows')
+
+    access_token = get_access_token()
+
+    for event in event_hosts:
+        result = json.loads(requests.get(
+            "https://graph.facebook.com/" + str(event.host_id) + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}&access_token=" + access_token).content.decode('utf-8'))['events']['data']
+        events.append(result)
+
+    events_popular = list(itertools.chain.from_iterable(events))
+
+    return render(request, 'livemusic.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+
+def art_exhibition(request):
+    events = []
+
+    event_hosts = EventHost.objects.filter(event_type='Art Exhibition')
+
+    access_token = get_access_token()
+
+    for event in event_hosts:
+        result = json.loads(requests.get(
+            "https://graph.facebook.com/" + str(event.host_id) + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}&access_token=" + access_token).content.decode('utf-8'))['events']['data']
+        events.append(result)
+
+    events_popular = list(itertools.chain.from_iterable(events))
+
+    return render(request, 'artexhibitions.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+
+def craft_market(request):
+    events = []
+
+    event_hosts = EventHost.objects.filter(event_type='Craft Market')
+
+    access_token = get_access_token()
+
+    for event in event_hosts:
+        result = json.loads(requests.get(
+            "https://graph.facebook.com/" + str(event.host_id) + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}&access_token=" + access_token).content.decode('utf-8'))['events']['data']
+        events.append(result)
+
+    events_popular = list(itertools.chain.from_iterable(events))
+
+    return render(request, 'craftmarkets.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})    

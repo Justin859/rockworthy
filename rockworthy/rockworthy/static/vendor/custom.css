@@ -17,6 +17,10 @@ nav {
     transition: .3s; 
 }
 
+.menu-items {
+    position: relative;
+}
+
 .menu-items li {
     color: #ffffff;
     text-align: center;    
@@ -46,11 +50,6 @@ nav {
     color: #ffffffff !important;
 }
 
-.nav-button {
-    margin-top: 15px;
-    margin-left: 160px; 
-}
-
 .nav-button span {
     left: 40px !important; 
     top: 22px !important;
@@ -59,7 +58,7 @@ nav {
 .nav-button-open {
     position: fixed; /* Fixed/sticky position */
     margin: 0;
-    top: 5px; /* Place the button at the bottom of the page */
+    top: 15px; /* Place the button at the bottom of the page */
     left: 160px; /* Place the button 30px from the right */
     transition: .3s;         
 }
@@ -67,7 +66,7 @@ nav {
 .nav-button-closed {
     position: fixed; /* Fixed/sticky position */
     margin: 0;
-    top: 5px; /* Place the button at the bottom of the page */
+    top: 15px; /* Place the button at the bottom of the page */
     left: -25px; /* Place the button 30px from the right */
     transition: .3s;         
 }
@@ -129,9 +128,8 @@ nav {
 sub {
     font-size: 10px !important;
     color: #ffc107;
-    margin: 0px;
-    top: 25px;
-    left: 8px;
+    margin-top: 5px;
+    margin-left: 8px;
 }
 
 .menu-items a:hover {

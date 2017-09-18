@@ -22,5 +22,8 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^event/(?P<event_id>[0-9]+)/detail/$', views.event_detail, name='event_detail'),
     url(r'^venues/$', views.venues, name='venues'),
-    url(r'venue/(?P<venue_id>[0-9]+)/$', views.venue_detail, name='venue_detail')
+    url(r'^venue/(?P<venue_id>[0-9]+)/$', views.venue_detail, name='venue_detail'),
+    url(r'^live-music/$', views.live_music, name='live_music'),
+    url(r'^art-exhibitions/$', views.art_exhibition, name='art_exhibition'),
+    url(r'^craft-markets/$', views.craft_market, name='craft_market'),
 ]

@@ -25,35 +25,32 @@
                 <hr class="fret" />
                 <li><a class="main-menu-item menu-item-active" href="/">Home</a></li>
                 <hr class="fret" />
-                <div style="padding: 18px !important;"></div>
+                <li><a class="secondary-menu-item" href="/live-music/">Live Music</a></li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item disabled" href="#">Live Music</a></li>
+                <li><a class="secondary-menu-item" href="/art-exhibitions/">Art Exhibitions</a></li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item disabled" href="#">Art Exibits</a></li>
+                <li><a class="secondary-menu-item" href="/craft-markets/">Craft Markets</a></li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item disabled" href="#">Festivals</a></li>
+                <li><a class="secondary-menu-item disabled" href="/event-blog/">Event Blogs</a></li>
                 <hr class="fret" />
-                <div style="padding: 10px !important;"></div>
-                <hr class="fret" />
-                <li><a class="last-menu-item" href="/venues/">venues</a> - <a class="last-menu-item disabled" href="/About/">blogs</a></li>
+                <li><a class="last-menu-item" href="/venues/">venues</a> - <a class="last-menu-item disabled" href="/About/">special events</a></li>
                 <hr class="fret" />
                 <li><a class="last-menu-item disabled" href="/About/">About</a> - <a class="last-menu-item disabled" href="/Contact/">Contact</a></li>
                 <hr class="fret" />
                 <sub>site credit: <a target="_blank" href="http://www.yourdev.co.za/">&copy; Yourdev Web Development</a></sub>
             </ul>
         </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" style="background-color: #ffffff;">
             <div class="row">
                 <div class="col-2 hidden-lg-up"></div>
             
-                <div class="col-8 main-logo" align="right" style="margin-top: 30px;">
+                <div class="col-8 main-logo" align="right" style="margin-top: 30px; margin-bottom: 30px;">
                 <img class="img-fluid" src="{% static 'assets/rockworthy_main.png' %}">
                 </div>
                 
             </div>
 
         </div>
-            <hr />
                 {% block content %}{% endblock %}
 
     <!-- jQuery first, then tether.js, then Bootstrap JS -->

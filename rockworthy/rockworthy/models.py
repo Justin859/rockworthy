@@ -8,6 +8,14 @@ class EventHost(models.Model):
     host_image = models.ImageField(upload_to='rockworthy/static/assets/event_hosts/main_photo', max_length=255)
     host_id = models.CharField(max_length=255)
 
+    EVENT_TYPES = (('Live Shows', 'Live Shows'), ('Art Exhibition', 'Art Exhibition'), ('Craft Market', 'Craft Market'))
+
+    event_type = models.CharField(max_length=14, choices=EVENT_TYPES, default='Live Shows')
+
+    HOST_TYPES = (('Special Event', 'Special Event'), ('Venue', 'Venue'))
+
+    host_type = models.CharField(max_length=13, choices=HOST_TYPES, default='Venue')
+
     def __str__(self):
         return  self.host_name
 

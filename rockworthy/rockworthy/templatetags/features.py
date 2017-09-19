@@ -7,11 +7,18 @@ import markdown2
 register = template.Library()
 
 @register.filter(name='fix_date')
-def img_src(value):
+def fix_date(value):
     value = value.split("+")[0]
     format = "%Y-%m-%dT%H:%M:%S"
     value = datetime.strptime(value, format)
     return value
+
+@register.filter(name='trim_time')
+def trim_time(value):
+    value = value.split("+")[0]
+    format = "%Y-%m-%dT%H:%M:%S"
+    value = datetime.strptime(value, format)
+    return value.date()
 
 @register.filter(name='markdown_to_html')
 def markdown_to_html(markdown_text):

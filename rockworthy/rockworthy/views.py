@@ -75,6 +75,8 @@ def venues(request):
 
 def venue_detail(request, venue_id):
 
+    event_host = EventHost.objects.filter(host_id=venue_id)[0]
+
     access_token = get_access_token()
 
     venue = json.loads(requests.get(
@@ -85,10 +87,21 @@ def venue_detail(request, venue_id):
     except KeyError:
         raise Http404("Venue does not exists on Rock Worthy")
 
-    return render(request, 'venue_detail.html', {"venue": venue, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'venue_detail.html', {"venue": venue, "event_host": event_host, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
 
 def live_music(request):
     events = []
+    date_today = datetime.date.today()
+    week_day = date_today.weekday()
+
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3):
+        weekend_start = date_today + datetime.timedelta(days=4-week_day)
+        weekend_stop = weekend_start + datetime.timedelta(days=2)
+        mid_weekend = weekend_start + datetime.timedelta(days=1)
+    else:
+        weekend_start = date_today
+        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
+        mid_weekend = weekend_start + datetime.timedelta(days=1)
 
     event_hosts = EventHost.objects.filter(event_type='Live Shows')
 
@@ -101,7 +114,7 @@ def live_music(request):
 
     events_popular = list(itertools.chain.from_iterable(events))
 
-    return render(request, 'livemusic.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'livemusic.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
 def art_exhibition(request):
     events = []

@@ -40,4 +40,10 @@ $(document).ready(function(){
        lastScrollTop = st;
     });
 
+    $('.grid').masonry({
+        // options...
+        itemSelector: '.grid-item',
+      });
+
+
 });

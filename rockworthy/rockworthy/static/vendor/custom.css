@@ -80,7 +80,6 @@ nav {
     box-shadow: 2px 0px 2px #888888;
     border-radius: 2px;
     border: none;
-    margin-bottom: 15px !important; 
 }
 
 @media only screen and (min-width: 1024px){
@@ -141,10 +140,10 @@ sub {
 }
 
 .cover-photo {
-    background-size: cover;
-    height: 312px;
+    background-size: cover !important;
+    height: 312px !important;
     width: auto;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !important;
     background-color: #000000;
 }
 
@@ -154,3 +153,104 @@ a.disabled {
     /* And disable the pointer events */
     pointer-events: none;
   }
+
+  @media only screen and (max-width: 320px){
+    .grid .card {
+        width: 290px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .venue-header {
+        text-align: center;
+        font-size: 20px;
+    }
+    .venue-header img {
+        padding-top: 5px;
+        padding-right: 10px;
+
+    }
+}
+
+@media only screen and (max-width: 544px) and (min-width: 321px){
+    .grid .card {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .venue-header {
+        text-align: center;
+        font-size: 25px;
+    }
+    .venue-header img {
+        padding-top: 5px;
+        padding-right: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 544px){
+    .grid .card {
+        width: 350px;
+        height: auto;
+        margin: 10px;
+    }
+    .venue-header {
+        text-align: center;
+        font-size: 40px;
+    }
+    .venue-header img {
+        padding-top: 0px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px){
+    .grid .card {
+        width: 330px;
+        height: auto;
+        margin: 5px;
+    }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 992px){
+    .grid .card {
+        width: 290px;
+        height: auto;
+        margin: 10px;
+    }
+
+    .venue-header {
+        text-align: center;
+        font-size: 40px;
+    }
+    .venue-header img {
+        padding-top: 0px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .grid .card {
+        width: 350px;
+        height: auto;
+        margin: 10px;
+    }
+
+    .venue-header {
+        text-align: center;
+        font-size: 40px;
+    }
+    .venue-header img {
+        padding-top: 0px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+    }
+}
+
+.main-banner {
+    box-shadow: 2px 0px 2px #888888;
+    background-color: #ffffff;
+    padding-bottom: 5px;
+}

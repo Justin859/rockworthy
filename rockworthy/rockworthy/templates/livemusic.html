@@ -54,7 +54,7 @@
     <br />
     <div class="grid">
             {% for event in events|sort_pop %}
-              {% if event.start_time >= date %}
+              {% if event.start_time >= date and event.start_time|trim_time != weekend_start and event.start_time|trim_time != mid_weekend and event.start_time|trim_time != weekend_stop %}
               <div class="grid-item">
                 <div class="card">
                   <div style="height: 100%;">

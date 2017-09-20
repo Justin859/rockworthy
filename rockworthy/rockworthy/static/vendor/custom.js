@@ -1,6 +1,11 @@
 
 $(document).ready(function(){
 
+    $('.grid').masonry({
+        // options...
+        itemSelector: '.grid-item',
+      });
+
     $('.menu-pick').click(function(e) {
         if ($('#navigation-side-bar').hasClass('nav-closed')) {
             $('nav').removeClass('nav-closed');
@@ -39,11 +44,5 @@ $(document).ready(function(){
        }
        lastScrollTop = st;
     });
-
-    $('.grid').masonry({
-        // options...
-        itemSelector: '.grid-item',
-      });
-
 
 });

@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load features %}
-
+{% block title %}Home{% endblock%}
 {% block content %}
 
 <div class="container">
+    <div id="test"></div>
     <br />
     <div class="row">
       <div class="col-12">
-          <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Events This Weekend</h3>
-          <h1 class="hidden-md-up text-center">Events This Weekend</h1>
+            <div class="card">
+                <div class="card-block">
+                    <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Events This Weekend</h3>
+                    <h1 class="hidden-md-up text-center">Events This Weekend</h1>
+                </div>
+            </div>
       </div>
     </div>
     <br />
@@ -45,12 +50,16 @@
             {% endif %}
             {% endfor %}
         </div>
-
+        <br />
 
     <div class="row">
         <div class="col-12">
-            <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Upcoming Events</h3>
-            <h1 class="hidden-md-up text-center">Upcoming Events</h1>
+            <div class="card">
+                <div class="card-block">
+                    <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Upcoming Events</h3>
+                    <h1 class="hidden-md-up text-center">Upcoming Events</h1>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -86,5 +95,7 @@
     {% endfor %}
   </div>
 </div>  
+
+<a href="#top-page" class="btn-top-hide" id="myBtn"><span class="material-icons" style="color: #ffffff;">arrow_upward</span></a>
 
 {% endblock %}

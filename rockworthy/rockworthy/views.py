@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError
+
 from .models import *
+from .forms import *
 
 import os
 import json
@@ -35,7 +38,7 @@ def index(request):
 
     for event in event_hosts:
         result = json.loads(requests.get(
-            "https://graph.facebook.com/" + str(event.host_id) + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}&access_token=" + access_token).content.decode('utf-8'))['events']['data']
+            "https://graph.facebook.com/" + event.host_id + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}&access_token=" + access_token).content.decode('utf-8'))['events']['data']
         events.append(result)
 
     events_popular = list(itertools.chain.from_iterable(events))
@@ -54,7 +57,7 @@ def event_detail(request, event_id):
     except KeyError:
         raise Http404("event does not exist on Rock Worthy") 
         
-    return render(request, 'event_detail.html', {'event': event})
+    return render(request, 'Events/event_detail.html', {'event': event})
 
 
 def venues(request):
@@ -70,7 +73,7 @@ def venues(request):
     
     hosts = sorted(hosts, key=lambda k: k['fan_count'], reverse=True) 
 
-    return render(request, 'venues.html', {"hosts": hosts})
+    return render(request, 'Venues/venues.html', {"hosts": hosts})
 
 
 def venue_detail(request, venue_id):
@@ -87,7 +90,7 @@ def venue_detail(request, venue_id):
     except KeyError:
         raise Http404("Venue does not exists on Rock Worthy")
 
-    return render(request, 'venue_detail.html', {"venue": venue, "event_host": event_host, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Venues/venue_detail.html', {"venue": venue, "event_host": event_host, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
 
 def live_music(request):
     events = []
@@ -114,7 +117,7 @@ def live_music(request):
 
     events_popular = list(itertools.chain.from_iterable(events))
 
-    return render(request, 'livemusic.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'Events/livemusic.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
 def art_exhibition(request):
     events = []
@@ -130,7 +133,7 @@ def art_exhibition(request):
 
     events_popular = list(itertools.chain.from_iterable(events))
 
-    return render(request, 'artexhibitions.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Events/artexhibitions.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
 
 def craft_market(request):
     events = []
@@ -146,4 +149,28 @@ def craft_market(request):
 
     events_popular = list(itertools.chain.from_iterable(events))
 
-    return render(request, 'craftmarkets.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})    
+    return render(request, 'Events/craftmarkets.html', {"events": events_popular, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+
+def contact(request):
+    if request.method == 'POST':
+        form = Query(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            query = form.cleaned_data['query']
+
+            try:
+                send_mail('rockworthy.co.za Query', 'email: ' + email + '\n\nclient name: ' + name + '\n\nclient query: \n\n' + query, 'query@rockworthy.co.za', ['info@rockworthy.co.za'])
+            except BadHeaderError:
+                return HttpResponse('Invalid Header found.')
+
+            messages.success(request, 'Thank you for your query! Your query has been sent. We will contact you as soon as possible.')
+            return HttpResponseRedirect('/contact/') 
+    else:
+        form = Query()
+    return render(request, 'contact.html', {'form': form})
+
+def about(request):
+
+    return render(request, 'about.html')   

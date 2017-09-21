@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load features %}
+{% block title %}Contact{% endblock%}
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+            </div>
+            <div class="modal-body">
+                <p>{{message}}</p>
+                <p>If it has been longer than 48hrs or if you would like to contact us directly send and email to <a href="mailto:info@yourdev.co.za?Subject=Online Query (yourdev.co.za)" style="text-decoration: none; color:#ffc107" target="_top"><b>info@rockworthy.co.za</b></a></p>
+            </div>
+            <div class="modal-footer">
+                <a href="" type="button" class="btn secondary-btn" style="background-color: #ffffff; box-shadow: none !important;" data-dismiss="modal">OK</a>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+
+<br />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="cover-photo hidden-sm-down cover-image" style="background: url(/static/assets/images/audience-868074_1920.jpg) center center;"></div>
+            <img class="img-fluid hidden-md-up cover-image" src="/static/assets/images/audience-868074_1920.jpg">
+        </div>
+    </div>
+ <br />
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div style="height: 100%;">
+                    <div class="card-block">
+                        <h4 class="card-title">Rock Worthy wants to hear from you! Whether you're an artist, fan or event organizer.</h4>
+                        <p class="card-text">We have a blog section if you would like to promote an event, artist, band or venue.</p>
+                        <p class="card-text">And if you just have a query we're happy to hear it.</p>
+                        <br />
+                        <div class="container">
+                        <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <div class="col-12 col-md-6" style="padding-bottom: 15px;">
+                                <input type="text" class="form-control-lg" name="name" style="width: 100%;" placeholder="Your name" aria-describedby="nameHelp" required>
+                                <small id="nameHelp" class="form-text text-danger hide">Please enter your name.</small>                                
+                            </div>
+                            <div class="col-12 col-md-6" style="padding-bottom: 15px;">
+                                <input type="email" class="form-control-lg email-input" name="email" style="width: 100%;" placeholder="Your email address" aria-describedby="emailHelp" required>
+                                <small class="form-text text-muted hide">We'll never share your email with anyone else.</small>                                
+                                <small id="emailHelp" class="form-text-help text-danger hide">Please enter a valid email address.</small>                                
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <div class="col-12" style="padding-bottom: 15px;">
+                                <textarea type="text" class="form-control-lg" name="query" style="width: 100%;" placeholder="Your Query" rows="10" maxlength="1001" aria-describedby="queryHelp" required></textarea>
+                                <small class="form-text text-muted hide">Your query can be a request, suggestion or a question.</small>                                
+                                <small id="queryHelp" class="form-text-help text-danger hide">Please enter a query.</small>                                
+                            </div>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-warning float-right">Submit</button>
+                        
+                        </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<div id="overlay">
+    <div id="text">
+        <div class="loader"></div>
+        <div class="loader-text">&nbsp;Sending Query...</div>
+    </div>
+</div>
+
+{% endblock %}

@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^live-music/$', views.live_music, name='live_music'),
     url(r'^art-exhibitions/$', views.art_exhibition, name='art_exhibition'),
     url(r'^craft-markets/$', views.craft_market, name='craft_market'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^contact/$', views.contact, name='contact'),
 ]

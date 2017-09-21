@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="{% static 'assets/rockworthy_logo.png' %}">
 
-        <title>Rock Worthy</title>
+        <title>Rock Worthy - {% block title%}{% endblock %}</title>
         <!-- Google Icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">    
@@ -33,14 +33,14 @@
                 <hr class="fret" />
                 <li><a class="secondary-menu-item disabled" href="/event-blog/">Event Blogs</a></li>
                 <hr class="fret" />
-                <li><a class="last-menu-item" href="/venues/">venues</a> - <a class="last-menu-item disabled" href="/About/">special events</a></li>
+                <li><a class="last-menu-item" href="/venues/">Venues</a> - <a class="last-menu-item disabled" href="/special-events/">Special Events</a></li>
                 <hr class="fret" />
-                <li><a class="last-menu-item disabled" href="/About/">About</a> - <a class="last-menu-item disabled" href="/Contact/">Contact</a></li>
+                <li><a class="last-menu-item " href="/about/">About</a> - <a class="last-menu-item" href="/contact/">Contact</a></li>
                 <hr class="fret" />
                 <sub>site credit: <a target="_blank" href="http://www.yourdev.co.za/">&copy; Yourdev Web Development</a></sub>
             </ul>
         </nav>
-        <div class="container-fluid main-banner">
+        <div class="container-fluid main-banner" id="top-page">
             <div class="row">
                 <div class="col-2 hidden-lg-up"></div>
             
@@ -55,10 +55,10 @@
 
     <!-- jQuery first, then tether.js, then Bootstrap JS -->
         <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
-        <script src="{% static 'vendor/bower_components/masonry/dist/masonry.pkgd.min.js' %}"></script>        
+        <script src="{% static 'vendor/bower_components/masonry/dist/masonry.pkgd.min.js' %}"></script>
+        <script src="{% static 'vendor/custom.js' %}"></script>        
         <script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>        
         <script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'vendor/custom.js' %}"></script>
     </body>
 
 </html>

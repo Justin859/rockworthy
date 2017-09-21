@@ -32,6 +32,15 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['rockworthy-env.zdm3bhufhs.us-east-1.elasticbeanstalk.com', '127.0.0.1']
 
+EMAIL_BACKEND = 'django_ses.SESBackend'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+EMAIL_HOST = 'bounce.rockworthy.co.za'
+EMAIL_HOST_USER = 'query@rockworthy.co.za'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
 
 # Application definition
 

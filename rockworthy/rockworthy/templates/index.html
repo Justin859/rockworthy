@@ -54,7 +54,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="card hide">
+            <div class="card">
                 <div class="card-block">
                     <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Upcoming Events</h3>
                     <h1 class="hidden-md-up text-center">Upcoming Events</h1>
@@ -68,7 +68,7 @@
       {% for event in events|sort_pop %}
         {% if event.start_time >= date and event.start_time|trim_time != weekend_start and event.start_time|trim_time != mid_weekend and event.start_time|trim_time != weekend_stop %}
         <div class="grid-item">
-          <div class="card">
+          <div class="card hide">
             <div style="height: 100%;">
                 <img class="card-img-top img-fluid" src="{{event.cover.source}}" alt="">
                 <div class="card-block">

@@ -286,6 +286,7 @@ a.disabled {
 }
 
 .btn-top-show {
+    display: block;
     height: 50px;
     width: 50px;
     -webkit-transition-timing-function: ease-out;
@@ -296,13 +297,7 @@ a.disabled {
 }
 
 .btn-top-hide {
-    height: 0px;
-    width: 0px;
-    -webkit-transition-timing-function: ease-in;
-    transition-timing-function: ease-in;
-    -webkit-transition-delay: 0.3s; /* Safari */
-    transition-delay: 0.3s;
-    line-height: 0px;
+    display: none;
 }
 
 .cover-image {

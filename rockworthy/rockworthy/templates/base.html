@@ -31,11 +31,11 @@
                 <hr class="fret" />
                 <li><a class="secondary-menu-item" href="/craft-markets/">Craft Markets</a></li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item disabled" href="/event-blog/">Event Blogs</a></li>
+                <li><a class="secondary-menu-item disabled" onclick='return false;' href="/event-blog/">Event Blogs</a></li>
                 <hr class="fret" />
-                <li><a class="last-menu-item" href="/venues/">Venues</a> - <a class="last-menu-item disabled" href="/special-events/">Special Events</a></li>
+                <li><a class="last-menu-item" href="/venues/">Venues</a> - <a class="last-menu-item disabled" onclick='return false;' href="/special-events/">Special Events</a></li>
                 <hr class="fret" />
-                <li><a class="last-menu-item " href="/about/">About</a> - <a class="last-menu-item" href="/contact/">Contact</a></li>
+                <li><a class="last-menu-item disabled" onclick='return false;'  href="/about/">About</a> - <a class="last-menu-item" href="/contact/">Contact</a></li>
                 <hr class="fret" />
                 <sub>site credit: <a target="_blank" href="http://www.yourdev.co.za/">&copy; Yourdev Web Development</a></sub>
             </ul>
@@ -56,7 +56,7 @@
     <!-- jQuery first, then tether.js, then Bootstrap JS -->
         <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
         <script src="{% static 'vendor/bower_components/masonry/dist/masonry.pkgd.min.js' %}"></script>
-        <script src="{% static 'vendor/custom.js' %}"></script>        
+        <script src="{% static 'vendor/custom.js' %}"></script>
         <script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>        
         <script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     </body>

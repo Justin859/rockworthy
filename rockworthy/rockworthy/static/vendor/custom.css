@@ -29,7 +29,6 @@ nav {
 .menu-items a {
     text-decoration: none;
     color: #cccccc;
-    text-justify: top;
     text-align: justify;
 }
 
@@ -309,7 +308,7 @@ a.disabled {
     width: 150px !important;
     color: #ffffff !important;
     background-color: #ffc107 !important;
-    border: 1 solid #ffc107;
+    border: 1 solid #ffc107 !important;
     margin-bottom: 15px !important;
 }
 

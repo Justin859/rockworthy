@@ -1,5 +1,3 @@
-$('.container').hide();
-
 var $grid = $('.grid').masonry({
     // options...
     itemSelector: '.grid-item',
@@ -9,7 +7,7 @@ var $grid = $('.grid').masonry({
 $grid.imagesLoaded().progress(function() {
     // init Masonry
     $grid.masonry('layout');
-    $('.container').show();
+    $('.card').removeClass('hide');
   });
 
 $(document).ready(function(){    

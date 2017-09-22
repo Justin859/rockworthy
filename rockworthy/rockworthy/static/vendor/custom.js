@@ -1,9 +1,18 @@
-$(document).ready(function(){
+$('.container').hide();
 
-    $('.grid').masonry({
-        itemSelector: '.grid-item',
-        transitionDuration: 0,
-        });    
+var $grid = $('.grid').masonry({
+    // options...
+    itemSelector: '.grid-item',
+    transitionDuration: 0,
+  });
+
+$grid.imagesLoaded().progress(function() {
+    // init Masonry
+    $grid.masonry('layout');
+    $('.container').show();
+  });
+
+$(document).ready(function(){    
 
     $('.menu-pick').click(function(e) {
         if ($('#navigation-side-bar').hasClass('nav-closed')) {

@@ -8,6 +8,7 @@ $grid.imagesLoaded().progress(function() {
     // init Masonry
     $grid.masonry('layout');
     $('.card').removeClass('hide');
+    $('.loading').addClass('hide');
   });
 
 $(document).ready(function(){    

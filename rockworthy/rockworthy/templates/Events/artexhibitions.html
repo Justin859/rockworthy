@@ -17,6 +17,11 @@
         </div>
     </div>
     <br />
+    <div class="row loading">
+        <div class="col-12" align="center">
+            <div class="loader-items"></div> 
+        </div>
+    </div>
     <div class="grid">
             {% for event in events|sort_pop %}
               {% if event.start_time >= date %}

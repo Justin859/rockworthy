@@ -17,11 +17,14 @@
         </div>
     </div>
     <br />
-
+    <div class="row loading">
+        <div class="col-12" align="center">
+            <div class="loader-items"></div> 
+        </div>
+    </div>
         <div class="grid">
             {% for event in events|sort_pop %}
             {% if event.start_time|trim_time == weekend_start or event.start_time|trim_time == mid_weekend or event.start_time|trim_time == weekend_stop %}
-    
             <div class="grid-item">
               <div class="card hide" style="height: auto;">
                   <div style="height: 100%;">
@@ -61,6 +64,11 @@
             </div>
         </div>
     <br />
+    <div class="row loading">
+        <div class="col-12" align="center">
+            <div class="loader-items"></div> 
+        </div>
+    </div>
     <div class="grid">
             {% for event in events|sort_pop %}
               {% if event.start_time >= date and event.start_time|trim_time != weekend_start and event.start_time|trim_time != mid_weekend and event.start_time|trim_time != weekend_stop %}
@@ -83,7 +91,7 @@
                                 <a type="button" href="/event/{{event.id}}/detail/" class="btn btn-secondary">view event</a>
                                 <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary">View on facebook</a>
                               </div>
-                          </li>                  
+                          </li>
                       </ul>
                   </div>
                   </div>

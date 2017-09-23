@@ -168,6 +168,10 @@ a.disabled {
         padding-right: 10px;
 
     }
+    .main-banner img {
+        height: 63.625px;
+        width: 156.625px;
+    }
 }
 
 @media only screen and (max-width: 544px) and (min-width: 321px){
@@ -185,7 +189,12 @@ a.disabled {
         padding-top: 5px;
         padding-right: 10px;
     }
+    .main-banner img {
+        height: 63.625px;
+        width: 156.625px;
+    }
 }
+
 
 @media only screen and (max-width: 768px) and (min-width: 544px){
     .grid .card {
@@ -202,6 +211,11 @@ a.disabled {
         padding-right: 10px;
         padding-bottom: 5px;
     }
+
+    .main-banner img {
+        height: 127.25px;
+        width: 313.25px;
+    }
 }
 
 @media only screen and (max-width: 992px) and (min-width: 768px){
@@ -209,6 +223,10 @@ a.disabled {
         width: 330px;
         height: auto;
         margin: 5px;
+    }
+    .main-banner img {
+        height: 127.25px;
+        width: 313.25px;
     }
 }
 
@@ -228,6 +246,10 @@ a.disabled {
         padding-right: 10px;
         padding-bottom: 5px;
     }
+    .main-banner img {
+        height: 127.25px;
+        width: 313.5px;
+    }
 }
 
 @media only screen and (min-width: 1200px){
@@ -245,6 +267,11 @@ a.disabled {
         padding-top: 0px;
         padding-right: 10px;
         padding-bottom: 5px;
+    }
+
+    .main-banner img {
+        height: 254.5px;
+        width: 627.5px;
     }
 }
 

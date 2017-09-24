@@ -5,7 +5,6 @@
 {% block content %}
 
 <div class="container">
-    <div id="test"></div>
     <br />
     <div class="row">
       <div class="col-12">
@@ -37,6 +36,7 @@
                           <b>interested</b>&nbsp;<span class="badge badge-warning">{{event.interested_count}}</span></p>
                       </div>
                       <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><h4>{{event.start_time | get_weekday}}</h4></li>
                           <li class="list-group-item"><b>Place</b>&nbsp;{{event.place.name}}</li>                  
                           <li class="list-group-item"><p><b>Start</b>&nbsp;{{event.start_time | fix_date}}</p>
                             <p><b>End</b>&nbsp; {{event.end_time | fix_date}}</p>
@@ -86,6 +86,7 @@
                     <b>interested</b>&nbsp;<span class="badge badge-warning">{{event.interested_count}}</span></p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><h4>{{event.start_time | get_weekday}}</h4></li>                        
                     <li class="list-group-item"><b>Place</b>&nbsp;{{event.place.name}}</li>                  
                     <li class="list-group-item"><p><b>Start</b>&nbsp;{{event.start_time | fix_date}}</p>
                       <p><b>End</b>&nbsp; {{event.end_time | fix_date}}</p>

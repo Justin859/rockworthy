@@ -139,10 +139,10 @@ sub {
 }
 
 .cover-photo {
-    background-size: cover !important;
+    background-size: center !important;
     height: 312px !important;
     width: auto;
-    background-repeat: no-repeat !important;
+    background-repeat: repeat-x !important;
     background-color: #000000;
 }
 

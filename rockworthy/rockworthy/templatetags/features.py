@@ -13,6 +13,14 @@ def fix_date(value):
     value = datetime.strptime(value, format)
     return value
 
+@register.filter(name='get_weekday')
+def fix_date(value):
+    value = value.split("+")[0]
+    format = "%Y-%m-%dT%H:%M:%S"
+    value = datetime.strptime(value, format)
+    week_day = (value.strftime('%A'))
+    return week_day
+
 @register.filter(name='trim_time')
 def trim_time(value):
     value = value.split("+")[0]

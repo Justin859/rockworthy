@@ -55,14 +55,14 @@ def index(request):
     date_today = datetime.date.today()
     week_day = date_today.weekday()
 
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3):
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
         weekend_start = date_today + datetime.timedelta(days=4-week_day)
         weekend_stop = weekend_start + datetime.timedelta(days=2)
         mid_weekend = weekend_start + datetime.timedelta(days=1)
     else:
         weekend_start = date_today
         weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
+        mid_weekend = weekend_start
 
     return render(request, 'index.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
@@ -104,7 +104,7 @@ def venue_detail(request, venue_id):
     access_token = get_access_token()
 
     venue = json.loads(requests.get(
-        "https://graph.facebook.com/" + venue_id + "/?fields=cover,events{cover,name,attending_count,interested_count,start_time,end_time},fan_count,picture,category,name&access_token=" + access_token).content.decode('utf-8'))
+        "https://graph.facebook.com/" + venue_id + "/?fields=cover,events{cover,name,place,attending_count,interested_count,start_time,end_time},fan_count,picture,category,name&access_token=" + access_token).content.decode('utf-8'))
 
     try:
         venue['id']
@@ -120,14 +120,14 @@ def live_music(request):
     date_today = datetime.date.today()
     week_day = date_today.weekday()
 
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3):
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
         weekend_start = date_today + datetime.timedelta(days=4-week_day)
         weekend_stop = weekend_start + datetime.timedelta(days=2)
         mid_weekend = weekend_start + datetime.timedelta(days=1)
     else:
         weekend_start = date_today
         weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
+        mid_weekend = weekend_start
 
     return render(request, 'Events/livemusic.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 

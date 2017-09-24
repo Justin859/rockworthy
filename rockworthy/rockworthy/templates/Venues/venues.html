@@ -22,7 +22,7 @@
                 {% for host in hosts %}
                 <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td><img src="{{host.picture.data.url}}"></td>
+                    <td><img src="{{host.picture.data.url}}" style="height:50px; width:50px;"></td>
                     <td><a href="/venue/{{host.id}}/">{{host.name}}</a></td>
                     <td>{{host.category}}</td>
                 </tr>

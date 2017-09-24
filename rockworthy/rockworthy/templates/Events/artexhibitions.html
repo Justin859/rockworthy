@@ -35,15 +35,16 @@
                           <b>interested</b>&nbsp;<span class="badge badge-warning">{{event.interested_count}}</span></p>
                       </div>
                       <ul class="list-group list-group-flush">
-                          <li class="list-group-item"><b>Place</b>&nbsp;{{event.place.name}}</li>                  
-                          <li class="list-group-item"><p><b>Start</b>&nbsp;{{event.start_time | fix_date}}</p>
+                            <li class="list-group-item"><h4>{{event.start_time | get_weekday}}</h4></li>
+                            <li class="list-group-item"><b>Place</b>&nbsp;{{event.place.name}}</li>                  
+                            <li class="list-group-item"><p><b>Start</b>&nbsp;{{event.start_time | fix_date}}</p>
                             <p><b>End</b>&nbsp; {{event.end_time | fix_date}}</p>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-center">
+                            </li>
+                            <li class="list-group-item d-flex justify-content-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a type="button" href="/event/{{event.id}}/detail/" class="btn btn-secondary">view event</a>
                                 <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary">View on facebook</a>
-                              </div>
+                            </div>
                           </li>                  
                       </ul>
                   </div>

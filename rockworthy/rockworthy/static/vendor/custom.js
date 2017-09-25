@@ -12,42 +12,25 @@ $(document).ready(function(){
         $('.card').removeClass('hide');
         $('.loading').addClass('hide');
     
-        var waypoint_weekend = new Waypoint({
-            element: document.getElementById('weekend-heading'),
-            handler: function(direction) {
-                if(direction == 'down') {
-                    $('#weekend-heading').addClass('top-heading');
-                    $('#upcoming-heading').removeClass('top-heading');
-                } else {
-                    $('#weekend-heading').removeClass('top-heading');
-                    $('#upcoming-heading').removeClass('top-heading');
-                }
-    
-            }
+        var sticky = new Waypoint.Sticky({
+            element: $('#weekend-heading')[0]
         })
-    
-        var waypoint_upcoming = new Waypoint({
-            element: document.getElementById('upcoming-heading'),
-            handler: function(direction) {
-                if(direction == 'down') {
-                    $('#weekend-heading').removeClass('top-heading');
-                    $('#upcoming-heading').addClass('top-heading');
-                } else {
-                    $('#upcoming-heading').removeClass('top-heading');
-                    $('#weekend-heading').addClass('top-heading');
-                }
-    
-            },
-            offset: 30
+
+        var sticky = new Waypoint.Sticky({
+            element: $('#upcoming-heading')[0]
         })
+
+        $('.sticky-wrapper').addClass('hidden-md-up');
     
         var waypoint = new Waypoint({
             element: document.getElementById('weekend-events-heading'),
             handler: function(direction) {
                 if(direction === 'down') {
-                    $('#weekend-events-tag').removeClass('hide-element');
+                    $('#weekend-events-tag').removeClass('events-tag-closed');
+                    $('#weekend-events-tag').addClass('events-tag-open');
                 } else {
-                    $('#weekend-events-tag').addClass('hide-element');
+                    $('#weekend-events-tag').addClass('events-tag-closed');                    
+                    $('#weekend-events-tag').removeClass('events-tag-open');                    
                 }
     
             }
@@ -56,10 +39,15 @@ $(document).ready(function(){
         var waypoint = new Waypoint({
             element: document.getElementById('upcoming-events-heading'),
             handler: function(direction) {
-                if(direction === 'down') {
-                    $('#upcoming-events-tag').removeClass('hide-element');
+                if(direction === 'down') {                    
+                    $('#weekend-events-tag').addClass('events-tag-closed');
+                    $('#upcoming-events-tag').removeClass('events-tag-closed');
+                    $('#upcoming-events-tag').addClass('events-tag-open');
                 } else {
-                    $('#upcoming-events-tag').addClass('hide-element');
+                    $('#weekend-events-tag').removeClass('events-tag-closed');                    
+                    $('#weekend-events-tag').addClass('events-tag-open');
+                    $('#upcoming-events-tag').addClass('events-tag-closed');                    
+                    $('#upcoming-events-tag').removeClass('events-tag-open');                    
                 }
     
             }

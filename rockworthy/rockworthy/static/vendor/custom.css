@@ -431,32 +431,39 @@ textarea {
     box-shadow: 2px 0px 2px #888888;
 }
 
-.top-heading {
-    position: fixed;
-    margin: 0;
-    top: 0px;
-    z-index: 1;
-    color: #ffffff;
-    background-color: #ffc107;
-}
-
 .events-tag {
     position: fixed; /* Fixed/sticky position */
     top: 20px; /* Place the button at the bottom of the page */
-    right: 0px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     cursor: pointer; /* Add a mouse pointer on hover */
+    width: 200px;
     background-color: #ffc107;
     box-shadow: 2px 1px 2px #888888;
     padding: 8px;
     text-align: center;
-    vertical-align: baseline;
-    white-space: nowrap;
     border-radius: 2px;
     border: none;
     color: #ffffff;
+    transition: 0.5s;
+}
+
+.events-tag-open {
+    right: 0px; /* Place the button 30px from the right */    
+    transition: .3s;         
+}
+
+.events-tag-closed {
+    right: -200px; /* Place the button 30px from the right */    
+    transition: .3s;    
 }
 
 .hide-element {
     opacity: 0;
 }
+
+.stuck {
+    position:fixed;
+    margin: 0;
+    top:0;
+    z-index: 1
+  }

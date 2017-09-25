@@ -48,6 +48,35 @@ def get_events_particular(host_type):
 
     return events
 
+def get_hosts_particular(host_type):
+    batch_values = []
+    events = []
+    event_hosts = EventHost.objects.filter(host_type__in=host_type)
+
+    for host in event_hosts:
+        batch_values.append({"method": "GET", "relative_url": host.host_id + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}"})
+
+    url = "https://graph.facebook.com"
+    access_token = get_access_token()
+
+    values = {"access_token":access_token, "batch":batch_values, "include_headers": "false"}
+
+    data = urllib.parse.urlencode(values)
+    data = data.encode('utf-8')
+
+    req = urllib.request.Request(url, data)
+    resp = urllib.request.urlopen(req)
+    respData = resp.readall().decode('utf-8')
+    result = json.loads(respData)
+
+    for event in result:
+        events.append(json.loads(event['body'])['events']['data'])
+
+    events = list(itertools.chain.from_iterable(events))    
+
+
+    return events
+
 def index(request):
 
     events = get_events_particular(['Live Shows', 'Art Exhibition', 'Craft Market'])
@@ -143,6 +172,13 @@ def craft_market(request):
 
     return render(request, 'Events/craftmarkets.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
 
+def special_events(request):
+
+    events = get_hosts_particular(['Special Event'])
+
+    return render(request, 'Events/special_events.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+
+
 def contact(request):
     if request.method == 'POST':
         form = Query(request.POST)
@@ -166,3 +202,4 @@ def contact(request):
 def about(request):
 
     return render(request, 'about.html')
+

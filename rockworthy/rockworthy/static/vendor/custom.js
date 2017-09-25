@@ -1,17 +1,71 @@
-var $grid = $('.grid').masonry({
-    // options...
-    itemSelector: '.grid-item',
-    transitionDuration: 0,
-  });
-
-$grid.imagesLoaded().progress(function() {
-    // init Masonry
-    $grid.masonry('layout');
-    $('.card').removeClass('hide');
-    $('.loading').addClass('hide');
-  });
-
 $(document).ready(function(){    
+
+    var $grid = $('.grid').masonry({
+        // options...
+        itemSelector: '.grid-item',
+        transitionDuration: 0,
+      });
+    
+    $grid.imagesLoaded().progress(function() {
+        // init Masonry
+        $grid.masonry('layout');
+        $('.card').removeClass('hide');
+        $('.loading').addClass('hide');
+    
+        var waypoint_weekend = new Waypoint({
+            element: document.getElementById('weekend-heading'),
+            handler: function(direction) {
+                if(direction == 'down') {
+                    $('#weekend-heading').addClass('top-heading');
+                    $('#upcoming-heading').removeClass('top-heading');
+                } else {
+                    $('#weekend-heading').removeClass('top-heading');
+                    $('#upcoming-heading').removeClass('top-heading');
+                }
+    
+            }
+        })
+    
+        var waypoint_upcoming = new Waypoint({
+            element: document.getElementById('upcoming-heading'),
+            handler: function(direction) {
+                if(direction == 'down') {
+                    $('#weekend-heading').removeClass('top-heading');
+                    $('#upcoming-heading').addClass('top-heading');
+                } else {
+                    $('#upcoming-heading').removeClass('top-heading');
+                    $('#weekend-heading').addClass('top-heading');
+                }
+    
+            },
+            offset: 30
+        })
+    
+        var waypoint = new Waypoint({
+            element: document.getElementById('weekend-events-heading'),
+            handler: function(direction) {
+                if(direction === 'down') {
+                    $('#weekend-events-tag').removeClass('hide-element');
+                } else {
+                    $('#weekend-events-tag').addClass('hide-element');
+                }
+    
+            }
+        })
+    
+        var waypoint = new Waypoint({
+            element: document.getElementById('upcoming-events-heading'),
+            handler: function(direction) {
+                if(direction === 'down') {
+                    $('#upcoming-events-tag').removeClass('hide-element');
+                } else {
+                    $('#upcoming-events-tag').addClass('hide-element');
+                }
+    
+            }
+        })
+        
+      });
 
     $('.menu-pick').click(function(e) {
         if ($('#navigation-side-bar').hasClass('nav-closed')) {
@@ -131,6 +185,8 @@ $(document).ready(function(){
         $("#overlay_text").hide();
     });
 
-    $('#myModal').modal('show')    
+    $('#myModal').modal('show')
 
 });
+
+

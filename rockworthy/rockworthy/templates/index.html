@@ -4,18 +4,22 @@
 {% block title %}Home{% endblock%}
 {% block content %}
 
-<div class="container">
+<div class="container hidden-sm-down">
     <br />
     <div class="row">
-      <div class="col-12">
+      <div class="col-12" id="weekend-events-heading">
             <div class="card">
                 <div class="card-block">
-                    <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Events This Weekend</h3>
-                    <h1 class="hidden-md-up text-center">Events This Weekend</h1>
+                    <h3 class="display-4" style="margin-left: 25px;">Events This Weekend</h3>
                 </div>
             </div>
       </div>
     </div>
+</div>
+<div class="col-12 heading hidden-md-up" id="weekend-heading">
+    <h4 class="hidden-md-up text-center">Events This Weekend</h4>            
+</div>
+<div class="container">
     <br />
         <div class="row loading">
             <div class="col-12" align="center">
@@ -55,19 +59,23 @@
             {% endfor %}
         </div>
         <br />
-
+</div>
+<div class="container hidden-sm-down">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="upcoming-events-heading">
             <div class="card">
                 <div class="card-block">
-                    <h3 class="display-4 hidden-sm-down" style="margin-left: 25px;">Upcoming Events</h3>
-                    <h1 class="hidden-md-up text-center">Upcoming Events</h1>
+                    <h3 class="display-4" style="margin-left: 25px;">Upcoming Events</h3>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
+<div class="col-12 heading hidden-md-up" id="upcoming-heading">
+    <h4 class="hidden-md-up text-center">Upcoming Events</h4>
+</div>
     <br />
+<div class="container">
     <div class="row loading">
         <div class="col-12" align="center">
             <div class="loader-items"></div> 
@@ -107,5 +115,7 @@
 </div>  
 
 <a href="#top-page" class="btn-top-hide" id="myBtn"><span class="material-icons" style="color: #ffffff;">arrow_upward</span></a>
+<div class="hidden-sm-down events-tag hide-element" id="weekend-events-tag"><h5>Weekend Events</h5></div>
+<div class="hidden-sm-down events-tag hide-element" id="upcoming-events-tag"><h5>Upcoming Events</h5></div>
 
 {% endblock %}

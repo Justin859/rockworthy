@@ -17,7 +17,7 @@ $(document).ready(function(){
         })
 
         var sticky = new Waypoint.Sticky({
-            element: $('#upcoming-heading')[0],
+            element: $('#upcoming-heading')[0]
         })
 
         $('.sticky-wrapper').addClass('hidden-md-up');

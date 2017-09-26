@@ -19,39 +19,10 @@ def get_access_token():
         "https://graph.facebook.com/oauth/access_token?client_id=" + os.environ.get('APP_ID') + "&client_secret=" + os.environ.get('APP_SECRET')  + "&grant_type=client_credentials").content.decode('utf-8'))['access_token']
     return access_token
 
-def get_events_particular(host_type):
+def get_events_particular(event_type, host_type):
     batch_values = []
     events = []
-    event_hosts = EventHost.objects.filter(event_type__in=host_type)
-
-    for host in event_hosts:
-        batch_values.append({"method": "GET", "relative_url": host.host_id + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}"})
-
-    url = "https://graph.facebook.com"
-    access_token = get_access_token()
-
-    values = {"access_token":access_token, "batch":batch_values, "include_headers": "false"}
-
-    data = urllib.parse.urlencode(values)
-    data = data.encode('utf-8')
-
-    req = urllib.request.Request(url, data)
-    resp = urllib.request.urlopen(req)
-    respData = resp.readall().decode('utf-8')
-    result = json.loads(respData)
-
-    for event in result:
-        events.append(json.loads(event['body'])['events']['data'])
-
-    events = list(itertools.chain.from_iterable(events))    
-
-
-    return events
-
-def get_hosts_particular(host_type):
-    batch_values = []
-    events = []
-    event_hosts = EventHost.objects.filter(host_type__in=host_type)
+    event_hosts = EventHost.objects.filter(event_type__in=event_type, host_type__in=host_type)
 
     for host in event_hosts:
         batch_values.append({"method": "GET", "relative_url": host.host_id + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}"})
@@ -79,21 +50,9 @@ def get_hosts_particular(host_type):
 
 def index(request):
 
-    events = get_events_particular(['Live Shows', 'Art Exhibition', 'Craft Market'])
+    events = get_events_particular(['Live Shows', 'Art Exhibition', 'Craft Market'], ['Venue', 'Special Event'])
 
-    date_today = datetime.date.today()
-    week_day = date_today.weekday()
-
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
-        weekend_start = date_today + datetime.timedelta(days=4-week_day)
-        weekend_stop = weekend_start + datetime.timedelta(days=2)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
-    else:
-        weekend_start = date_today
-        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start
-
-    return render(request, 'index.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'index.html', {"events": events})
 
 def event_detail(request, event_id):
 
@@ -140,78 +99,31 @@ def venue_detail(request, venue_id):
     except KeyError:
         raise Http404("Venue does not exists on Rock Worthy")
 
-    return render(request, 'Venues/venue_detail.html', {"venue": venue, "event_host": event_host, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Venues/venue_detail.html', {"venue": venue, "event_host": event_host})
 
 def live_music(request):
 
-    events = get_events_particular(['Live Shows'])
+    events = get_events_particular(['Live Shows'], ['Venue'])
 
-    date_today = datetime.date.today()
-    week_day = date_today.weekday()
-
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
-        weekend_start = date_today + datetime.timedelta(days=4-week_day)
-        weekend_stop = weekend_start + datetime.timedelta(days=2)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
-    else:
-        weekend_start = date_today
-        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start
-
-    return render(request, 'Events/livemusic.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'Events/livemusic.html', {"events": events})
 
 def art_exhibition(request):
 
-    date_today = datetime.date.today()
-    week_day = date_today.weekday()
+    events = get_events_particular(['Art Exhibition'], ['Venue'])
 
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
-        weekend_start = date_today + datetime.timedelta(days=4-week_day)
-        weekend_stop = weekend_start + datetime.timedelta(days=2)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
-    else:
-        weekend_start = date_today
-        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start
-    events = get_events_particular(['Art Exhibition'])
-
-    return render(request, 'Events/artexhibitions.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'Events/artexhibitions.html', {"events": events})
 
 def craft_market(request):
 
-    date_today = datetime.date.today()
-    week_day = date_today.weekday()
+    events = get_events_particular(['Craft Market'], ['Venue'])
 
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
-        weekend_start = date_today + datetime.timedelta(days=4-week_day)
-        weekend_stop = weekend_start + datetime.timedelta(days=2)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
-    else:
-        weekend_start = date_today
-        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start
-
-    events = get_events_particular(['Craft Market'])
-
-    return render(request, 'Events/craftmarkets.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'Events/craftmarkets.html', {"events": events})
 
 def special_events(request):
 
-    date_today = datetime.date.today()
-    week_day = date_today.weekday()
+    events = get_events_particular(['Live Shows'], ['Special Event'])
 
-    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
-        weekend_start = date_today + datetime.timedelta(days=4-week_day)
-        weekend_stop = weekend_start + datetime.timedelta(days=2)
-        mid_weekend = weekend_start + datetime.timedelta(days=1)
-    else:
-        weekend_start = date_today
-        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
-        mid_weekend = weekend_start
-
-    events = get_hosts_particular(['Special Event'])
-
-    return render(request, 'Events/special_events.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
+    return render(request, 'Events/special_events.html', {"events": events})
 
 
 def contact(request):

@@ -17,7 +17,7 @@ $(document).ready(function(){
         })
 
         var sticky = new Waypoint.Sticky({
-            element: $('#upcoming-heading')[0]
+            element: $('#upcoming-heading')[0],
         })
 
         $('.sticky-wrapper').addClass('hidden-md-up');
@@ -175,6 +175,11 @@ $(document).ready(function(){
 
     $('#myModal').modal('show')
 
+    $('.grid').each(function() {
+        if( !$.trim($(this).html()).length ) {
+            $(this).parent().html('<div class="card" style="padding: 8px; margin: 50px;" align="center"><h1>No Events Yet.</h1></div>')
+         }
+    })
 });
 
 

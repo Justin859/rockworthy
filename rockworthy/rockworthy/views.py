@@ -162,21 +162,56 @@ def live_music(request):
 
 def art_exhibition(request):
 
+    date_today = datetime.date.today()
+    week_day = date_today.weekday()
+
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
+        weekend_start = date_today + datetime.timedelta(days=4-week_day)
+        weekend_stop = weekend_start + datetime.timedelta(days=2)
+        mid_weekend = weekend_start + datetime.timedelta(days=1)
+    else:
+        weekend_start = date_today
+        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
+        mid_weekend = weekend_start
     events = get_events_particular(['Art Exhibition'])
 
-    return render(request, 'Events/artexhibitions.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Events/artexhibitions.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
 def craft_market(request):
 
+    date_today = datetime.date.today()
+    week_day = date_today.weekday()
+
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
+        weekend_start = date_today + datetime.timedelta(days=4-week_day)
+        weekend_stop = weekend_start + datetime.timedelta(days=2)
+        mid_weekend = weekend_start + datetime.timedelta(days=1)
+    else:
+        weekend_start = date_today
+        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
+        mid_weekend = weekend_start
+
     events = get_events_particular(['Craft Market'])
 
-    return render(request, 'Events/craftmarkets.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Events/craftmarkets.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
 def special_events(request):
 
+    date_today = datetime.date.today()
+    week_day = date_today.weekday()
+
+    if (week_day == 0 or week_day == 1 or week_day == 2 or week_day == 3 or week_day == 4):
+        weekend_start = date_today + datetime.timedelta(days=4-week_day)
+        weekend_stop = weekend_start + datetime.timedelta(days=2)
+        mid_weekend = weekend_start + datetime.timedelta(days=1)
+    else:
+        weekend_start = date_today
+        weekend_stop = weekend_start + datetime.timedelta(days=6-week_day)
+        mid_weekend = weekend_start
+
     events = get_hosts_particular(['Special Event'])
 
-    return render(request, 'Events/special_events.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200')})
+    return render(request, 'Events/special_events.html', {"events": events, "date": datetime.datetime.now().strftime('%Y-%m-%dT00:00:00+0200'), "weekend_start": weekend_start, "weekend_stop": weekend_stop, "mid_weekend": mid_weekend, "date_today": date_today})
 
 
 def contact(request):

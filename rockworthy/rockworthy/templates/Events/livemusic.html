@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load features %}
-{% block title %}Home{% endblock%}
+{% block title %} - Live Music{% endblock%}
 {% block content %}
 
+<br />
 <div class="container hidden-sm-down">
     <br />
     <div class="row">
-      <div class="col-12">
+      <div class="col-12" id="weekend-events-heading">
             <div class="card">
                 <div class="card-block">
-                    <h3 class="display-4" id="weekend-events-heading" style="margin-left: 25px;">Live Music - This Weekend</h3>
+                    <h3 class="display-4" style="margin-left: 25px;">Events This Weekend</h3>
                 </div>
             </div>
       </div>
     </div>
 </div>
 <div class="col-12 heading hidden-md-up" id="weekend-heading">
-    <h4 class="hidden-md-up text-center">Live Music - This Weekend</h4>            
+    <h4 class="hidden-md-up text-center">Events This Weekend</h4>            
 </div>
 <div class="container">
     <br />
@@ -62,10 +63,10 @@
 </div>
 <div class="container hidden-sm-down">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="upcoming-events-heading">
             <div class="card">
                 <div class="card-block">
-                    <h3 class="display-4" id="upcoming-events-heading" style="margin-left: 25px;">Live Music - Upcoming Events</h3>
+                    <h3 class="display-4" style="margin-left: 25px;">Upcoming Events</h3>
                 </div>
             </div>
         </div>

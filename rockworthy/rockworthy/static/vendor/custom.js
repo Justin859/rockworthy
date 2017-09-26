@@ -1,5 +1,15 @@
 $(document).ready(function(){    
 
+    var sticky = new Waypoint.Sticky({
+        element: $('#weekend-heading')[0]
+    })
+
+    var sticky = new Waypoint.Sticky({
+        element: $('#upcoming-heading')[0]
+    })
+
+    $('.sticky-wrapper').addClass('hidden-md-up');
+
     var $grid = $('.grid').imagesLoaded( function(){
         // init Masonry after all images have loaded
         $grid.masonry({
@@ -12,16 +22,6 @@ $(document).ready(function(){
             $grid.masonry('layout');
             $('.card').removeClass('hide');
             $('.loading').addClass('hide');
-        
-            var sticky = new Waypoint.Sticky({
-                element: $('#weekend-heading')[0]
-            })
-    
-            var sticky = new Waypoint.Sticky({
-                element: $('#upcoming-heading')[0]
-            })
-    
-            $('.sticky-wrapper').addClass('hidden-md-up');
         
             var waypoint = new Waypoint({
                 element: document.getElementById('weekend-events-heading'),

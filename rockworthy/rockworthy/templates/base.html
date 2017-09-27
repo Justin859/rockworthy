@@ -54,13 +54,10 @@
 
     <!-- jQuery first, then tether.js, then Bootstrap JS -->
         <script src="{% static 'vendor/bower_components/jquery/dist/jquery.min.js' %}"></script>
-        <script src="{% static 'vendor/bower_components/waypoints/lib/jquery.waypoints.min.js' %}"></script>   
-        <script src="{% static 'vendor/bower_components/waypoints/lib/shortcuts/sticky.min.js' %}"></script>           
-        <script src="{% static 'vendor/bower_components/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>        
-        <script src="{% static 'vendor/bower_components/masonry/dist/masonry.pkgd.min.js' %}"></script>
-        <script src="{% static 'vendor/custom.js' %}"></script>
+        <script src="{% static 'vendor/main.js' %}"></script>
         <script src="{% static 'vendor/bower_components/tether/dist/js/tether.min.js' %}"></script>        
         <script src="{% static 'vendor/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        {% block scripts %}{% endblock %}
     </body>
 
 </html>

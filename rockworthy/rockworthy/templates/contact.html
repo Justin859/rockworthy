@@ -7,22 +7,13 @@
 {% if messages %}
 {% for message in messages %}
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Success</h5>
-            </div>
-            <div class="modal-body">
-                <p>{{message}}</p>
-                <p>If it has been longer than 48hrs or if you would like to contact us directly send and email to <a href="mailto:info@yourdev.co.za?Subject=Online Query (yourdev.co.za)" style="text-decoration: none; color:#ffc107" target="_top"><b>info@rockworthy.co.za</b></a></p>
-            </div>
-            <div class="modal-footer">
-                <a href="" type="button" class="btn secondary-btn" style="background-color: #ffffff; box-shadow: none !important;" data-dismiss="modal">OK</a>
-            </div>
-            </div>
-        </div>
+<div class="modal-container">
+    <div class="modal-contents">
+        <p>{{message}}</p>
+        <p>If it has been longer than 48hrs or if you would like to contact us directly send and email to <a href="mailto:info@yourdev.co.za?Subject=Online Query (yourdev.co.za)" style="text-decoration: none; color:#ffc107" target="_top"><b>info@rockworthy.co.za</b></a></p>
+        <a class="close-button" href="#"><i class="material-icons">close</i></a>
     </div>
+</div>
 {% endfor %}
 {% endif %}
 

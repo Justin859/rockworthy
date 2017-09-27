@@ -60,5 +60,10 @@ $(document).ready(function() {
         $("#overlay").hide();
     });
 
-    $('#myModal').modal('show')
+    $('.close-button').click(function() {
+        $('.modal-container').addClass('modal-closed');        
+    })
+
+    $('.modal-container').removeClass('hide')
+
 });

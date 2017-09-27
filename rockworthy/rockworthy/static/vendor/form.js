@@ -54,15 +54,10 @@ $(document).ready(function() {
 
     $("form").submit(function() {
         document.getElementById("overlay").style.display = "block";
-        document.getElementById("overlay_text").style.display = "block";
     });
 
     $(window).bind("pageshow", function(event) {
         $("#overlay").hide();
-    });
-    
-    $(window).bind("pageshow", function(event) {
-        $("#overlay_text").hide();
     });
 
     $('#myModal').modal('show')

@@ -64,6 +64,5 @@ $(document).ready(function() {
         $('.modal-container').addClass('modal-closed');        
     })
 
-    $('.modal-container').removeClass('hide')
-
+    $('#myModal').modal('show')
 });

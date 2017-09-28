@@ -140,7 +140,7 @@ def contact(request):
             except BadHeaderError:
                 return HttpResponse('Invalid Header found.')
 
-            messages.success(request, 'Thank you for your query! Your query has been sent. We will contact you as soon as possible.')
+            messages.success(request, 'Your query has been sent. We will contact you as soon as possible.')
             return HttpResponseRedirect('/contact/') 
     else:
         form = Query()

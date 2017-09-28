@@ -10,13 +10,13 @@ $(document).ready(function(){
 
     $('.sticky-wrapper').addClass('hidden-md-up');
 
-    var $grid = $('.grid').imagesLoaded( function(){
-        // init Masonry after all images have loaded
-        $grid.masonry({
+    var $grid = $('.grid').masonry({
             // options...
             itemSelector: '.grid-item',
             transitionDuration: 0,
-        })
+      });
+
+    // layout Masonry after each image loads
         $grid.imagesLoaded().progress(function() {
             // init Masonry
             $grid.masonry('layout');
@@ -55,12 +55,24 @@ $(document).ready(function(){
             })
             
           });
-    
-      });
 
       $('.grid').each(function() {
         if( !$.trim($(this).html()).length ) {
             $(this).parent().html('<div class="card" style="padding: 8px; margin: 50px;" align="center"><h1>No Events Yet.</h1></div>')
          }
     })
+
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+          clearTimeout (timer);
+          timer = setTimeout(callback, ms);
+        };
+      })();
+
+    $(window).resize(function() {
+        delay(function(){
+          Waypoint.refreshAll()
+        }, 500);
+    });
 });

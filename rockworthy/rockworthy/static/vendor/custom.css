@@ -307,59 +307,6 @@ textarea {
     100% { transform: rotate(360deg); }
 }
 
-  .modal-container {
-      position: fixed;
-      z-index: 100;
-      margin: 0;
-      top: 0px;
-      background-color: #ffffff;
-      box-shadow: 2px 0px 2px #888888;
-      height: 200px;
-      -webkit-animation-duration: 0.7s; /* Safari 4.0 - 8.0 */      
-      animation-duration: 0.7s;      
-      -webkit-animation-name: modal-open; /* Safari 4.0 - 8.0 */
-      animation-name: modal-open;
-  }
-
-  .modal-contents .close-button {
-      color: #000000;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-  }
-
-  .close-button:hover {
-      color: #ffc107;
-  }
-
-  .modal-contents {
-      padding: 5px;
-      padding-top: 15px;      
-  }
-
-  .modal-closed {
-    top: -202px;
-    -webkit-transition: 0.7s;
-    transition: 0.7s;
-}
-
-@-webkit-keyframes modal-open {
-    from {
-        top: -202px;
-    }
-    to {
-        top: 0px;
-    }
-}
-@keyframes modal-open {
-    from {
-        top: -202px;
-    }
-    to {
-        top: 0px;
-    }
-}
-
 /* Partucular screen size styling */
 
 @media only screen and (max-width : 500px) {

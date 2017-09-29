@@ -50,8 +50,11 @@
                           <li class="list-group-item d-flex justify-content-center">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <a type="button" href="/event/{{event.id}}/detail/" class="btn btn-secondary">view event</a>
-                                <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary">View on facebook</a>
-                              </div>
+                                <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary"><i style="color:#3b5998;" class="fa fa-facebook-official"></i></a>
+                                {% if event.ticket_uri %}
+                                <a type="button" target="_blank" href="{{event.ticket_uri}}" class="btn btn-secondary"><i class="fa fa-ticket"></i></a>
+                                {% endif %}  
+                            </div>
                           </li>
                       </ul>
                   </div>
@@ -105,8 +108,11 @@
                     <li class="list-group-item d-flex justify-content-center">
                       <div class="btn-group" role="group" aria-label="Basic example">
                           <a type="button" href="/event/{{event.id}}/detail/" class="btn btn-secondary">view event</a>
-                          <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary">View on facebook</a>
-                        </div>
+                          <a type="button" href="https://www.facebook.com/events/{{event.id}}" class="btn btn-secondary"><i style="color:#3b5998;" class="fa fa-facebook-official"></i></a>
+                          {% if event.ticket_uri %}
+                          <a type="button" target="_blank" href="{{event.ticket_uri}}" class="btn btn-secondary"><i class="fa fa-ticket"></i></a>
+                          {% endif %}
+                      </div>
                     </li>
                 </ul>
             </div>

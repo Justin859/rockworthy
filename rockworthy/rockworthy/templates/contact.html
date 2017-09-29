@@ -7,6 +7,7 @@
 
 <!-- Modal -->
 {% if messages %}
+{% for message in messages %}
 <div class="modal fade" id="myModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -17,7 +18,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <p>Your query has been sent. We will contact you as soon as possible.</p>
+            <p>{{message}}</p>
             <p>If it has been longer than 48hrs or if you would like to contact us directly send and email to <a href="mailto:info@yourdev.co.za?Subject=Online Query (yourdev.co.za)" style="text-decoration: none; color:#ffc107" target="_top"><b>info@rockworthy.co.za</b></a></p>            
         </div>
         <div class="modal-footer">
@@ -26,9 +27,8 @@
         </div>
     </div>
 </div>
+{% endfor %}
 {% endif %}
-
-
 
 <br />
 

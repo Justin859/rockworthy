@@ -25,7 +25,7 @@ def get_events_particular(event_type, host_type):
     event_hosts = EventHost.objects.filter(event_type__in=event_type, host_type__in=host_type)
 
     for host in event_hosts:
-        batch_values.append({"method": "GET", "relative_url": host.host_id + "/?fields=events{cover,name,attending_count,interested_count,start_time,end_time,place}"})
+        batch_values.append({"method": "GET", "relative_url": host.host_id + "/?fields=events{cover,name,attending_count,ticket_uri,interested_count,start_time,end_time,place}"})
 
     url = "https://graph.facebook.com"
     access_token = get_access_token()
@@ -59,7 +59,7 @@ def event_detail(request, event_id):
     access_token = get_access_token()
 
     event = json.loads(requests.get(
-        "https://graph.facebook.com/" + event_id + "/?fields=cover,name,description,attending_count,interested_count,start_time,end_time,place&access_token=" + access_token).content.decode('utf-8'))
+        "https://graph.facebook.com/" + event_id + "/?fields=cover,name,ticket_uri,description,attending_count,interested_count,start_time,end_time,place&access_token=" + access_token).content.decode('utf-8'))
         
     try:
         event['name']
@@ -92,7 +92,7 @@ def venue_detail(request, venue_id):
     access_token = get_access_token()
 
     venue = json.loads(requests.get(
-        "https://graph.facebook.com/" + venue_id + "/?fields=cover,events{cover,name,place,attending_count,interested_count,start_time,end_time},fan_count,picture,category,name&access_token=" + access_token).content.decode('utf-8'))
+        "https://graph.facebook.com/" + venue_id + "/?fields=cover,events{cover,ticket_uri,name,place,attending_count,interested_count,start_time,end_time},fan_count,picture,category,name&access_token=" + access_token).content.decode('utf-8'))
 
     try:
         venue['id']

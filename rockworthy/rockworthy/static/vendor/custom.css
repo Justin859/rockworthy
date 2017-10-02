@@ -170,6 +170,12 @@ sub {
     background-color: #000000;
 }
 
+.cover-text {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
 .main-banner {
     box-shadow: 2px 0px 2px #888888;
     background-color: #ffffff;

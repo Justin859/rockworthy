@@ -56,7 +56,7 @@ $(document).ready(function(){
             
           });
 
-      $('.grid-item').each(function() {
+      $('.grid').each(function() {
         if( !$.trim($(this).html()).length ) {
             $(this).parent().html('<div class="card" style="padding: 8px; margin: 50px;" align="center"><h1>No Events Yet.</h1></div>')
          }

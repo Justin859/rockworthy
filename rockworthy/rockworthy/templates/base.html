@@ -25,19 +25,73 @@
         <nav id="navigation-side-bar" class="nav-closed">
             <ul class="list-unstyled menu-items" style="padding-top: 80px;">
                 <hr class="fret" />
-                <li><a class="main-menu-item menu-item-active" href="/">Home</a></li>
+                <li>
+                    {% if request.get_full_path == '/' %}
+                    <a class="main-menu-item menu-item-active" href="/">Home</a>
+                    {% else %}
+                    <a class="main-menu-item" href="/">Home</a>                    
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item" href="/live-music/">Live Music</a></li>
+                <li>
+                    {% if request.get_full_path == '/live-music/' %}
+                    <a class="secondary-menu-item menu-item-active" href="/live-music/">Live Music</a>
+                    {% else %}
+                    <a class="secondary-menu-item" href="/live-music/">Live Music</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item" href="/art-exhibitions/">Art Exhibitions</a></li>
+                <li>
+                    {% if request.get_full_path == '/art-exhibitions/' %}
+                    <a class="secondary-menu-item menu-item-active" href="/art-exhibitions/">Art Exhibitions</a>
+                    {% else %}
+                    <a class="secondary-menu-item" href="/art-exhibitions/">Art Exhibitions</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item" href="/craft-markets/">Craft Markets</a></li>
+                <li>
+                    {% if request.get_full_path == '/craft-markets/' %}
+                    <a class="secondary-menu-item menu-item-active" href="/craft-markets/">Craft Markets</a>
+                    {% else %}
+                    <a class="secondary-menu-item" href="/craft-markets/">Craft Markets</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="secondary-menu-item disabled" onclick='return false;' href="/event-blog/">Event Blogs</a></li>
+                <li>
+                    {% if request.get_full_path == '/event-blog/' %}
+                    <a class="secondary-menu-item disabled menu-itemactive" onclick='return false;' href="/event-blog/">Event Blogs</a>
+                    {% else %}
+                    <a class="secondary-menu-item disabled" onclick='return false;' href="/event-blog/">Event Blogs</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="last-menu-item" href="/venues/">Venues</a> - <a class="last-menu-item" href="/special-events/">Special Events</a></li>
+                <li>
+                    {% if request.get_full_path == '/venues/' %}
+                    <a class="last-menu-item menu-item-active" href="/venues/">Venues</a>
+                    {% else %}
+                    <a class="last-menu-item" href="/venues/">Venues</a>
+                    {% endif %}
+                    -
+                    {% if request.get_full_path == '/special-events/' %}
+                     <a class="last-menu-item menu-item-active" href="/special-events/">Special Events</a>
+                    {% else %}
+                    <a class="last-menu-item" href="/special-events/">Special events</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
-                <li><a class="last-menu-item disabled" onclick='return false;'  href="/about/">About</a> - <a class="last-menu-item" href="/contact/">Contact</a></li>
+                <li>
+                    {% if request.get_full_path == '/about/' %}
+                    <a class="last-menu-item menu-item-active"  href="/about/">About</a>
+                    {% else %}
+                    <a class="last-menu-item"  href="/about/">About</a>
+                    {% endif %}
+                    -
+                    {% if request.get_full_path == '/contact/' %}
+                    <a class="last-menu-item menu-item-active" href="/contact/">Contact</a>
+                    {% else %}
+                    <a class="last-menu-item" href="/contact/">Contact</a>
+                    {% endif %}
+                </li>
                 <hr class="fret" />
                 <sub>site credit: <a target="_blank" href="http://www.yourdev.co.za/">&copy; Yourdev Web Development</a></sub>
             </ul>

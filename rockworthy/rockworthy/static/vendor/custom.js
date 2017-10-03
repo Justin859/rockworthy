@@ -21,7 +21,7 @@ $(document).ready(function(){
             // init Masonry
             $grid.masonry('layout');
             $('.card').removeClass('hide');
-            $('.loading').addClass('hide');
+            $('.loading').addClass('invisible');
         
             var waypoint = new Waypoint({
                 element: document.getElementById('weekend-events-heading'),

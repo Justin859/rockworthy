@@ -242,9 +242,12 @@ textarea {
 }
 
 .hide {
-    display: none;
+    opacity: 0;
 }
 
+.invisible {
+    display: none;
+}
 /* loader css */
 
 #overlay, #overlay_text {

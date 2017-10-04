@@ -103,7 +103,7 @@ def venue_detail(request, venue_id):
 
 def live_music(request):
 
-    events = get_events_particular(['Live Shows'], ['Venue'])
+    events = get_events_particular(['Live Shows'], ['Venue', 'Special Event'])
 
     return render(request, 'Events/livemusic.html', {"events": events})
 

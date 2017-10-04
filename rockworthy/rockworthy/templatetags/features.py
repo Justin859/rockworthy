@@ -8,25 +8,35 @@ register = template.Library()
 
 @register.filter(name='fix_date')
 def fix_date(value):
-    value = value.split("+")[0]
-    format = "%Y-%m-%dT%H:%M:%S"
-    value = datetime.strptime(value, format)
+    try:
+        value = value.split("+")[0]
+        format = "%Y-%m-%dT%H:%M:%S"
+        value = datetime.strptime(value, format)
+    except ValueError:
+        value = 'N/A'
     return value
 
 @register.filter(name='get_weekday')
 def fix_date(value):
     value = value.split("+")[0]
     format = "%Y-%m-%dT%H:%M:%S"
-    value = datetime.strptime(value, format)
-    week_day = (value.strftime('%A'))
+    try:  
+        value = datetime.strptime(value, format)
+        week_day = (value.strftime('%A'))
+    except ValueError:
+        week_day = 'N/A'
     return week_day
 
 @register.filter(name='trim_time')
 def trim_time(value):
-    value = value.split("+")[0]
-    format = "%Y-%m-%dT%H:%M:%S"
-    value = datetime.strptime(value, format)
-    return value.date()
+    try: 
+        value = value.split("+")[0]
+        format = "%Y-%m-%dT%H:%M:%S"
+        value = datetime.strptime(value, format).date()
+    except ValueError:
+        value = 'N/A'
+        
+    return value
 
 @register.filter(name='markdown_to_html')
 def markdown_to_html(markdown_text):

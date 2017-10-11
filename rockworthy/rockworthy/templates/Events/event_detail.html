@@ -29,29 +29,35 @@
         </div>
     </div>
     <br />
+    {% if event.place.name|length < 100 %}
     <div class="row">
         <div class="col-2 hidden-sm-down"></div>
         <div class="col-12 text-center">
             <div class="card">
                 <div class="card-block">
+                    {% if event.place.name|length < 100 %}
                     <h3 class="card-title">{{event.place.name}}</h3>
+                    {% endif %}
                 </div>
             </div>  
         </div>
-    </div>       
+    </div>
+    {% endif %}
+    {% if event.place.location %}
     <div class="row">
-        <div class="col-1 hidden-sm-down"></div>
-        <div class="col-12">
-            <iframe
-            class="google-map"
-            width="100%"
-            height="auto"
-            frameborder="0" style="border:0;"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCUGbVg0er5HiP_5ARNdlabdkoJIs2ERjI
-                &q={{event.place.location.latitude}},{{event.place.location.longitude}}" allowfullscreen>
-            </iframe>
-        </div>
-    </div> 
+            <div class="col-1 hidden-sm-down"></div>
+            <div class="col-12">
+                <iframe
+                class="google-map"
+                width="100%"
+                height="auto"
+                frameborder="0" style="border:0;"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCUGbVg0er5HiP_5ARNdlabdkoJIs2ERjI
+                    &q={{event.place.location.latitude}},{{event.place.location.longitude}}" allowfullscreen>
+                </iframe>
+            </div>
+        </div> 
+    {% endif %}
 </div>
 <br />
 

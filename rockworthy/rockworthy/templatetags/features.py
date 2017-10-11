@@ -48,3 +48,15 @@ def markdown_to_html(markdown_text):
 def sort_pop(events):
     return sorted(events,key=lambda k: k['attending_count'],reverse=True)
 
+@register.filter(name='length_fix')
+def length_fix(string):
+    str_arr = string.split(" ");
+    has_bad_length = False
+    for item in str_arr:
+        if (len(item) > 25):
+            has_bad_length = True
+    if has_bad_length == True:
+        return string[:25]
+    else:
+        return string
+
